@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Наша история — Квиз</title>
+
+    <!-- Общие стили сайта -->
+    <link rel="stylesheet" href="../../../style.css">
+
+    <!-- Стили второй звезды -->
+    <link rel="stylesheet" href="stars2.css">
+    <link rel="stylesheet" href="../../../progress.css">
+</head>
+
+<body>
+
+    <!-- КОСМИЧЕСКИЙ ФОН -->
+    <div class="stars"></div>
+
+    <main class="quiz-container">
+
+        <h1>Небольшая викторина</h1>
+
+        <p class="subtitle">
+            Посмотрим, насколько у тебя хороша память
+        </p>
+
+        <!-- КАРТОЧКА КВИЗА -->
+        <section class="quiz-card" id="quizCard">
+
+            <!-- ПРОГРЕСС -->
+            <div class="quiz-progress">
+
+                <span id="questionCounter">Вопрос 1 из 10</span>
+
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+            </div>
+
+            <!-- ВОПРОС -->
+            <div class="question-content" id="questionContent">
+
+                <h2 id="questionTitle"></h2>
+
+                <!-- ОБЫЧНЫЕ ВАРИАНТЫ -->
+                <div class="answers" id="answers"></div>
+
+                <!-- СПЕЦИАЛЬНЫЙ ДЕВЯТЫЙ ВОПРОС -->
+                <div class="special-answers" id="specialAnswers">
+
+                    <button class="special-button" id="answerMe">
+                        Ты
+                    </button>
+
+                    <button class="special-button" id="answerMom">
+                        Мама
+                    </button>
+
+                </div>
+
+                <!-- ТЕКСТ ПОСЛЕ ОТВЕТА -->
+                <div class="feedback" id="feedback"></div>
+
+                <!-- СЛЕДУЮЩИЙ ВОПРОС -->
+                <button class="next-button" id="nextButton">
+                    Следующий вопрос
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ЗАВЕРШЕНИЕ -->
+        <section class="finish-screen" id="finishScreen">
+
+            <h2>Ты прошла мой маленький квиз! ♥</h2>
+
+            <button id="backButton">
+                Вернуться к созвездию
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="../../../progress.js"></script>
+    <script src="stars2.js"></script>
+
+</body>
+</html>

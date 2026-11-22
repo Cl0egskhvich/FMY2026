@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Задание на ввод</title>
+
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="stars4.css">
+    <link rel="stylesheet" href="../../../progress.css">
+</head>
+
+<body class="stars4-page">
+    <div class="stars4-background" aria-hidden="true"></div>
+
+    <main class="typing-game">
+
+        <header class="game-header">
+            <h1 id="gameTitle">Задание на ввод</h1>
+            <p id="gameSubtitle">Успей написать текст за 8 секунд!</p>
+        </header>
+
+        <section class="typing-area">
+
+            <div class="timer-block">
+                <div class="timer-label">
+                    <span>Осталось времени</span>
+                    <span id="timer">8.0</span>
+                </div>
+
+                <div class="timer-track">
+                    <div class="timer-fill" id="timerFill"></div>
+                </div>
+            </div>
+
+            <div class="input-area">
+
+                <div class="text-wrapper">
+
+                    <div class="text-preview" id="textPreview">
+                        <span class="typed-text"></span><span class="hint-text">Я тебя люблю</span>
+                    </div>
+
+                    <input
+                        type="text"
+                        id="typingInput"
+                        autocomplete="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        maxlength="12"
+                        aria-label="Напиши: Я тебя люблю"
+                    >
+
+                </div>
+
+                <div class="input-line"></div>
+
+            </div>
+
+            <div class="game-feedback" id="gameFeedback">
+                Нажми на строку, чтобы начать
+            </div>
+
+            <button class="retry-button" id="retryButton" type="button">
+                Попробовать ещё раз
+            </button>
+
+        </section>
+
+        <section class="second-game" id="secondGame">
+
+            <header class="game-header">
+                <h2>Нарисуй сердце!</h2>
+                <p>Обведи сердце по контуру за 6 секунд!</p>
+            </header>
+
+            <div class="drawing-game">
+
+                <div class="drawing-timer">
+                    <div class="timer-label">
+                        <span>Осталось времени</span>
+                        <span id="drawingTimer">6.0</span>
+                    </div>
+
+                    <div class="timer-track">
+                        <div class="timer-fill" id="drawingTimerFill"></div>
+                    </div>
+                </div>
+
+                <div class="heart-canvas-wrapper">
+                    <canvas id="heartCanvas" width="420" height="340"></canvas>
+                </div>
+
+                <div class="drawing-feedback" id="drawingFeedback">
+                    Начни с нижней точки сердца
+                </div>
+
+                <button class="retry-button" id="drawingRetry" type="button">
+                    Попробовать ещё раз
+                </button>
+
+            </div>
+
+        </section>
+        
+        <!-- ТРЕТЬЯ ИГРА — НАЙДИ СЕРДЕЧКО -->
+        <section class="third-game" id="thirdGame">
+
+            <header class="game-header">
+                <h2>Найди сердечко</h2>
+                <p>Сможешь найти то самое среди остальных? ❤️</p>
+            </header>
+
+            <div class="heart-hunt-game">
+
+                <div class="drawing-timer">
+                    <div class="timer-label">
+                        <span>Осталось времени</span>
+                        <span id="heartHuntTimer">40.0</span>
+                    </div>
+
+                    <div class="timer-track">
+                        <div class="timer-fill" id="heartHuntTimerFill"></div>
+                    </div>
+                </div>
+
+                <div class="heart-hunt-scene" id="heartHuntScene">
+
+                    <img
+                        src="images/heart-hunt-background.jpg"
+                        class="heart-hunt-background"
+                        alt="Множество сердечек"
+                        draggable="false"
+                    >
+
+                    <img
+                        src="images/heart-target.png"
+                        class="heart-target"
+                        id="heartTarget"
+                        alt="Найди это сердечко"
+                        draggable="false"
+                    >
+
+                </div>
+
+                <div class="heart-hunt-feedback" id="heartHuntFeedback">
+                    Внимательно присмотрись!
+                </div>
+
+                <button
+                    class="retry-button"
+                    id="heartHuntRetry"
+                    type="button"
+                >
+                    Попробовать ещё раз
+                </button>
+
+            </div>
+
+        </section>
+        
+
+        <!-- ========================================
+            ЧЕТВЁРТАЯ ИГРА — СОБЕРИ СЕРДЦЕ
+        ======================================== -->
+
+        <section class="fourth-game" id="fourthGame">
+
+            <header class="game-header">
+                <h2>Собери сердечко ❤️</h2>
+                <p>Заполни всё сердечко разноцветными блоками!</p>
+            </header>
+
+            <div class="tetris-game">
+
+                <!-- ИГРОВОЕ ПОЛЕ -->
+                <div class="heart-puzzle-area">
+
+                    <div class="heart-grid" id="heartGrid">
+                        <!-- Клетки сердца будут создаваться через JavaScript -->
+                    </div>
+
+                </div>
+
+                <!-- НИЖНЯЯ ПАНЕЛЬ ФИГУР -->
+                <div class="tetris-pieces-panel">
+
+                    <p class="pieces-title">Фигуры</p>
+
+                    <div class="tetris-pieces" id="tetrisPieces">
+
+                        <!-- Квадрат -->
+                        <div class="piece-option" data-shape="square">
+                            <div class="piece-preview">
+                                <span></span><span></span>
+                                <span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- L -->
+                        <div class="piece-option" data-shape="L">
+                            <div class="piece-preview">
+                                <span></span>
+                                <span></span>
+                                <span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- Отзеркаленная L -->
+                        <div class="piece-option" data-shape="L-mirror">
+                            <div class="piece-preview">
+                                <span></span>
+                                <span></span>
+                                <span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- Зигзаг -->
+                        <div class="piece-option" data-shape="Z">
+                            <div class="piece-preview">
+                                <span></span><span></span>
+                                <span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- Отзеркаленный зигзаг -->
+                        <div class="piece-option" data-shape="Z-mirror">
+                            <div class="piece-preview">
+                                <span></span><span></span>
+                                <span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- Палка -->
+                        <div class="piece-option" data-shape="I">
+                            <div class="piece-preview">
+                                <span></span><span></span>
+                                <span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- T -->
+                        <div class="piece-option" data-shape="T">
+                            <div class="piece-preview">
+                                <span></span><span></span><span></span>
+                                <span></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p class="pieces-hint">
+                        Перетащи фигуру в сердце. Чтобы вернуть её,
+                        перетащи обратно вниз.
+                    </p>
+
+                </div>
+
+                <!-- СООБЩЕНИЯ И ПОВТОР -->
+                <button
+                    class="retry-button"
+                    id="tetrisRetry"
+                    type="button"
+                >
+                    Попробовать ещё раз
+                </button>
+
+                <div class="tetris-feedback" id="tetrisFeedback"></div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <!-- ФИНАЛЬНОЕ ОКНО ЧЕТВЁРТОЙ ЗВЕЗДЫ -->
+    <div class="tetris-modal" id="tetrisModal">
+
+        <div class="tetris-modal-content">
+
+            <div class="tetris-modal-heart">❤️</div>
+
+            <h2>Ты собрала сердце!</h2>
+
+            <p>
+                Каждая деталь на своём месте.
+                Как и должно быть.
+            </p>
+
+            <button class="back-button" id="tetrisBackButton" type="button">
+                Вернуться назад
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="../../../progress.js"></script>
+    <script src="stars4.js"></script>
+
+</body>
+</html>

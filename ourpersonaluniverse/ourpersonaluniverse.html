@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Итоги нашего 2026 года</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="progress.css">
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <main class="hero">
+        <div class="content">
+            <p class="subtitle">♥ ЕЩЁ ОДИН ГОД С ТОБОЙ ♥</p>
+
+            <h1>Итоги нашего 2026 года</h1>
+
+            <p class="description">
+                Ещё один год. Круглый год
+                мы дарим друг другу наш свет и улыбки
+            </p>
+
+            <button id="startButton">
+                Нажми ♥
+            </button>
+        </div>
+
+    </main>
+
+    
+<!-- СЧЁТЧИК НАШЕГО ВРЕМЕНИ -->
+<section class="counter-section" id="counter">
+
+    <p class="subtitle">♥ НАША ИСТОРИЯ ♥</p>
+
+    <h2>Время, проведённое вместе</h2>
+
+    <p class="counter-description">
+        Каждый день с тобой — маленькое счастье
+    </p>
+
+    
+<div class="counter-container" id="counterCard"
+     role="button" tabindex="0"
+     aria-label="Переключить счётчик времени">
+
+    <div class="counter-main">
+        <span id="days">0</span>
+        <p id="mainLabel">дней вместе</p>
+    </div>
+
+    <div class="counter-details">
+
+        <div class="counter-item" id="monthsItem">
+            <span id="months">0</span>
+            <p>месяцев</p>
+        </div>
+
+        <div class="counter-item">
+            <span id="hours">0</span>
+            <p>часов</p>
+        </div>
+
+        <div class="counter-item">
+            <span id="minutes">0</span>
+            <p>минут</p>
+        </div>
+
+        <div class="counter-item">
+            <span id="seconds">0</span>
+            <p>секунд</p>
+        </div>
+
+    </div>
+
+    <p class="counter-hint" id="counterHint">
+        Нажми, чтобы узнать, сколько осталось до следующей годовщины
+    </p>
+
+</div>
+
+
+    <p class="counter-footer">
+        И это только начало нашей истории ✨
+    </p>
+
+</section>
+
+
+    <section class="memories" id="memories">
+        <p class="subtitle">♥ НАШИ МОМЕНТЫ ♥</p>
+        <h2>Проживая день за днём вместе...</h2>
+        <p>♥ Мы провели весь год рядом ♥</p>
+        <div class="gallery">
+
+        <div class="photo-card">
+            <img src="images/photo1.jpg" alt="Наше воспоминание">
+            
+            <p>Так мы встретили этот год</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo2.jpg" alt="Наше воспоминание">
+            <p>А 2026 стал нашим вторым календарным годом вместе</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo3.jpg" alt="Наше воспоминание">
+            <p>Даже модный приговор устраивали</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo4.jpg" alt="Наше воспоминание">
+            
+            <p>И обыденные дни были хороши с тобой</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo5.jpg" alt="Наше воспоминание">
+            <p>Вкусностями тебя кормил</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo6.jpg" alt="Наше воспоминание">
+            <p>И солнышко нам светило</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo7.jpg" alt="Наше воспоминание">
+            
+            <p>2025 был первым календарным годом вместе</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo8.jpg" alt="Наше воспоминание">
+            <p>И 8 марта было замечательным</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo9.jpg" alt="Наше воспоминание">
+            <p>А сколько раз по домам лениво сидели</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo10.jpg" alt="Наше воспоминание">
+            
+            <p>А лето то какое шикарное провели</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo11.jpg" alt="Наше воспоминание">
+            <p>Фоткались красиво и бродили где попало от скуки</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/photo12.jpg" alt="Наше воспоминание">
+            <p>Даже отметили Хэллоуин</p>
+        </div>
+
+    </div>
+    </section>
+<!-- ФИНАЛЬНЫЙ РЕБУС -->
+
+<section class="riddle-section" id="riddle">
+
+    <p class="subtitle">✦ А теперь к самому интересному... ✦</p>
+
+    <h2>Разгадай ребус 💕</h2>
+
+    <p class="riddle-description">
+        Сможешь разгадать?
+    </p>
+
+    <!-- КАРТИНКИ РЕБУСА -->
+
+    <div class="riddle-grid">
+
+        <button class="riddle-card" type="button"
+                data-image="rebus/rebus1.png"
+                data-hint="С какой стороны находятся апострофы, с той и убираем буквы. Что останется?">
+
+            <img src="rebus/rebus1.png" alt="Клад">
+            <span>клад</span>
+
+        </button>
+
+        <button class="riddle-card" type="button"
+                data-image="rebus/rebus2.png"
+                data-hint="В слове «ЮБКА» четыре буквы. Возьми только его левую половину.">
+
+            <img src="rebus/rebus2.png" alt="Юбка">
+            <span>юбка</span>
+
+        </button>
+
+        <button class="riddle-card" type="button"
+                data-image="rebus/rebus3.png"
+                data-hint="Одна буква находится внутри другой. Прочитай расположение букв вслух.">
+
+            <img src="rebus/rebus3.png" alt="Третья часть ребуса">
+            <span>буквы?</span>
+
+        </button>
+
+    </div>
+
+    <p class="riddle-hint">
+        Если будет сложно — нажми на картинку, чтобы получить подсказку.
+    </p>
+
+    <!-- ОТВЕТ -->
+
+    <div class="riddle-answer">
+
+        <p class="riddle-question">Какое слово получилось?</p>
+
+        <input
+            type="text"
+            id="riddleInput"
+            placeholder="Введи свой ответ..."
+            autocomplete="off"
+        >
+
+        <button id="checkRiddle" type="button">
+            Проверить ответ
+            <span>→</span>
+        </button>
+
+        <p id="riddleMessage" aria-live="polite"></p>
+
+        <button id="secretButton" type="button" hidden>
+            Открыть подарок ♥
+            <span>→</span>
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ОКНО С ПЕРЕВОРОТОМ КАРТОЧКИ -->
+
+<div class="riddle-modal" id="riddleModal" hidden>
+
+    <div class="riddle-modal-card">
+
+        <button class="riddle-modal-close"
+                id="closeRiddleModal"
+                type="button"
+                aria-label="Закрыть">
+            &times;
+        </button>
+
+        <div class="riddle-flip-inner">
+
+            <!-- ЛИЦЕВАЯ СТОРОНА -->
+
+            <div class="riddle-face riddle-front">
+                <img src="" alt="Увеличенная картинка ребуса"
+                     id="riddleModalImage">
+            </div>
+
+            <!-- ОБРАТНАЯ СТОРОНА -->
+
+            <div class="riddle-face riddle-back">
+                <p id="riddleModalHint"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- Увеличенный просмотр фотографии -->
+<div class="lightbox" id="lightbox">
+    <button class="close-lightbox" id="closeLightbox">
+        &times;
+    </button>
+
+    <img src="" alt="Увеличенная фотография" id="lightboxImage">
+</div>
+    <script src="progress.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

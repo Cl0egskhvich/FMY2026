@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Наша история — Фотографии</title>
+
+    <link rel="stylesheet" href="stars1.css">
+    <link rel="stylesheet" href="../../../progress.css">
+</head>
+<body>
+
+    <!-- ЗВЁЗДНЫЙ ФОН -->
+    <div class="stars"></div>
+
+    <main class="game-container">
+
+        <h1>Отсортируй фотографии</h1>
+
+        <p class="subtitle">
+            Расположи наши фотографии от самой старой до самой новой
+        </p>
+
+        <!-- ОБЛАСТЬ СОРТИРОВКИ -->
+        <section class="sorting-area">
+
+            <div class="date-label oldest">
+                Самая давняя
+            </div>
+
+            <div class="photo-slots" id="photoSlots">
+
+                <div class="photo-slot" data-position="0"></div>
+                <div class="photo-slot" data-position="1"></div>
+                <div class="photo-slot" data-position="2"></div>
+                <div class="photo-slot" data-position="3"></div>
+                <div class="photo-slot" data-position="4"></div>
+
+            </div>
+
+            <div class="date-label newest">
+                Самая новая
+            </div>
+
+        </section>
+
+        <!-- ФОТОГРАФИИ ДЛЯ СОРТИРОВКИ -->
+        <section class="photos-container">
+
+            <div class="photos-list" id="photosList"></div>
+
+        </section>
+
+        <!-- СООБЩЕНИЕ О ПОБЕДЕ -->
+        <div class="success-message" id="successMessage">
+
+            <h2>Ты справилась! ♥</h2>
+
+            <p>
+                Каждая фотография — часть нашей истории.
+            </p>
+
+            <button id="backButton">
+                Вернуться к созвездию
+            </button>
+
+        </div>
+
+    </main>
+    <script src="../../../progress.js"></script>
+    <script src="stars1.js"></script>
+
+</body>
+</html>

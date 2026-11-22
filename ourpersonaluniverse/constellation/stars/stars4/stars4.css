@@ -1,0 +1,1178 @@
+/* ОСНОВА СТРАНИЦЫ */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Serif+Display&family=Lora:wght@400;500;600;700&display=swap');
+
+.stars4-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: clamp(10px, 2vh, 24px) 16px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #211532 0%,
+            #100b1c 55%,
+            #080611 100%
+        );
+
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+
+/* ОСНОВНОЙ БЛОК */
+
+.typing-game {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+
+/* ЗАГОЛОВОК */
+
+.game-header h1 {
+    margin: 0 0 10px;
+
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 800;
+
+    color: #f1dcff;
+
+    text-shadow:
+        0 0 6px #c18aff66,
+        0 0 12px #a45aff44;
+}
+
+.game-header p {
+    margin: 0;
+
+    font-size: 16px;
+    color: #c4b3d8;
+}
+
+
+/* ОБЛАСТЬ ИГРЫ */
+
+.typing-area {
+    margin-top: 65px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ТАЙМЕР */
+
+.timer-block {
+    width: 260px;
+    max-width: 85%;
+    margin-bottom: 45px;
+}
+
+.timer-label {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    font-size: 13px;
+    color: #c9b8dc;
+}
+
+#timer {
+    font-weight: 700;
+    color: #e3c5ff;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-track {
+    width: 100%;
+    height: 3px;
+
+    background: #49345c;
+}
+
+.timer-fill {
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        105deg,
+        #ff963f 0%,
+        #ffbd70 35%,
+        #8bcdf5 100%
+    );
+
+    box-shadow:
+        0 0 6px #ffad5566,
+        0 0 10px #87cefa44;
+
+    transition: width 0.05s linear;
+}
+
+
+/* ПОЛЕ ВВОДА */
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.text-wrapper {
+    position: relative;
+
+    width: 300px;
+    max-width: 90vw;
+    height: 55px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-preview {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    white-space: pre;
+
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+
+    pointer-events: none;
+}
+
+.typed-text {
+    color: #ffffff;
+}
+
+.hint-text {
+    color: rgba(216, 180, 254, 0.38);
+}
+
+
+/* САМО ПОЛЕ ВВОДА */
+
+#typingInput {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: transparent;
+    caret-color: #ffffff;
+
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-align: center;
+
+    cursor: text;
+}
+
+
+/* ТОЛСТАЯ ЛИНИЯ ПОД ТЕКСТОМ */
+
+.input-line {
+    width: max-content;
+    min-width: 0;
+    height: 3px;
+
+    background: #c99aff;
+
+    box-shadow:
+        0 0 7px #c99aff88,
+        0 0 15px #a45aff55;
+
+    transition: width 0.1s, background 0.2s;
+}
+
+.input-area:focus-within .input-line {
+    background: #e0c0ff;
+
+    box-shadow:
+        0 0 10px #d8b4fe,
+        0 0 22px #a45aff88;
+}
+
+
+/* СООБЩЕНИЯ */
+
+.game-feedback {
+    min-height: 24px;
+    margin-top: 28px;
+
+    font-size: 15px;
+    color: #c4b3d8;
+}
+
+.game-feedback.success {
+    color: #a9f5c5;
+}
+
+.game-feedback.failure {
+    color: #ff9999;
+}
+
+
+/* КНОПКА ПОВТОРА */
+
+.retry-button {
+    display: none;
+
+    margin-top: 15px;
+    padding: 11px 23px;
+
+    border: 1px solid #c99aff;
+    border-radius: 7px;
+
+    background: #9b61c522;
+    color: #ead7ff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.retry-button:hover {
+    background: #9b61c555;
+    box-shadow: 0 0 15px #a45aff66;
+}
+
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media (max-width: 500px) {
+
+    .typing-area {
+        margin-top: 50px;
+    }
+
+    .text-preview,
+    #typingInput {
+        font-size: 25px;
+    }
+
+    .text-wrapper {
+        width: 280px;
+    }
+
+}
+
+/* ПЛАВНЫЙ ПЕРЕХОД МЕЖДУ ИГРАМИ */
+
+.second-game {
+    display: none;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.typing-area {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.typing-area.game-hidden {
+    opacity: 0;
+    transform: translateY(-15px);
+}
+
+.second-game.game-visible {
+    display: block;
+    animation: secondGameAppear 0.6s ease forwards;
+}
+
+@keyframes secondGameAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* ВТОРАЯ ИГРА */
+
+.second-game {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(15px);
+    text-align: center;
+}
+
+.second-game.game-visible {
+    display: block;
+    animation: secondGameAppear 0.6s ease forwards;
+}
+
+@keyframes secondGameAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ОБЛАСТЬ РИСОВАНИЯ */
+
+.drawing-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 35px;
+}
+
+.drawing-timer {
+    width: 260px;
+    max-width: 85%;
+    margin-bottom: 25px;
+}
+
+.heart-canvas-wrapper {
+    width: min(420px, 90vw);
+    aspect-ratio: 420 / 340;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#heartCanvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    touch-action: none;
+    cursor: crosshair;
+}
+
+.drawing-feedback {
+    min-height: 24px;
+    margin-top: 15px;
+
+    color: #c4b3d8;
+    font-size: 15px;
+}
+
+.drawing-feedback.success {
+    color: #a9f5c5;
+}
+
+.drawing-feedback.failure {
+    color: #ff9999;
+}
+
+.stars4-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, #ffffffaa 50%, transparent 100%),
+        radial-gradient(2px 2px at 25% 75%, #c99affaa 50%, transparent 100%),
+        radial-gradient(1px 1px at 45% 35%, #ffffff99 50%, transparent 100%),
+        radial-gradient(2px 2px at 65% 15%, #87cefa99 50%, transparent 100%),
+        radial-gradient(1px 1px at 80% 60%, #ffffffaa 50%, transparent 100%),
+        radial-gradient(2px 2px at 92% 85%, #c99aff99 50%, transparent 100%),
+        radial-gradient(1px 1px at 35% 90%, #ffffffaa 50%, transparent 100%);
+    background-size: 100% 100%;
+}
+
+.stars4-page::before,
+.stars4-page::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.stars4-page::before {
+    background:
+        radial-gradient(ellipse at 20% 30%, #7040a522, transparent 45%),
+        radial-gradient(ellipse at 80% 70%, #315c9b22, transparent 45%);
+}
+
+/* ========================================
+   ТРЕТЬЯ ИГРА — НАЙДИ СЕРДЕЧКО
+======================================== */
+
+.third-game {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(15px);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.third-game.game-visible {
+    display: block;
+    animation: secondGameAppear 0.6s ease forwards;
+}
+
+.heart-hunt-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: clamp(10px, 2vh, 25px);
+}
+
+.heart-hunt-game .drawing-timer {
+    width: 260px;
+    max-width: 85%;
+    margin-bottom: 25px;
+}
+
+/* Область с картинкой */
+
+.heart-hunt-scene {
+    position: relative;
+
+    width: min(
+        94vw,
+        calc((100svh - 270px) * 1.333333)
+    );
+
+    aspect-ratio: 1280 / 960;
+
+    overflow: hidden;
+    border-radius: 10px;
+
+    flex-shrink: 1;
+
+    box-shadow:
+        0 0 15px #a45aff22,
+        0 0 35px #a45aff11;
+}
+
+.heart-hunt-background {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Искомое сердце */
+
+.heart-target {
+    position: absolute;
+    object-fit: fill;
+    width: 9.375%;
+    height: 13.125%;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    z-index: 2;
+
+    /* Без подсветки — сердце не должно выдавать себя */
+    transition: transform 0.2s ease;
+}
+
+.heart-target.found {
+    animation: heartFound 0.5s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes heartFound {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Текст под изображением */
+
+.heart-hunt-feedback {
+    min-height: 24px;
+    margin-top: 18px;
+    color: #c4b3d8;
+    font-size: 15px;
+}
+
+.heart-hunt-feedback.success {
+    color: #a9f5c5;
+}
+
+.heart-hunt-feedback.failure {
+    color: #ff9999;
+}
+
+/* Кнопка повторной попытки */
+
+#heartHuntRetry {
+    display: none;
+}
+
+/* Адаптация под мобильные устройства */
+
+@media (max-width: 600px) {
+    .heart-hunt-game {
+        margin-top: 25px;
+    }
+
+    .heart-hunt-scene {
+        width: 96vw;
+        border-radius: 6px;
+    }
+
+    .heart-hunt-feedback {
+        font-size: 14px;
+    }
+}
+
+/* Компактное расположение второй игры */
+
+.second-game .game-header {
+    margin-bottom: 0;
+}
+
+.second-game .drawing-game {
+    margin-top: 10px;
+}
+
+.second-game .game-header h2 {
+    margin-bottom: 6px;
+}
+
+.second-game .game-header p {
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    .stars4-page {
+        padding: 12px 8px;
+    }
+
+    .heart-hunt-game .drawing-timer {
+        margin-bottom: 12px;
+    }
+
+    .heart-hunt-feedback {
+        margin-top: 8px;
+    }
+
+    .second-game .drawing-game {
+        margin-top: 8px;
+    }
+}
+
+
+/* ========================================
+   ЧЕТВЁРТАЯ ИГРА — СОБЕРИ СЕРДЦЕ
+======================================== */
+
+.fourth-game {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.fourth-game.game-visible {
+    display: block;
+    animation: secondGameAppear 0.6s ease forwards;
+}
+
+/* ТАЙМЕР ЧЕТВЁРТОЙ ИГРЫ */
+
+.tetris-game .drawing-timer {
+    position: static;
+    transform: none;
+    width: 260px;
+    max-width: 85%;
+    margin: 0 auto 25px;
+}
+
+@media (max-width: 768px) {
+    .tetris-game .drawing-timer {
+        width: 35%;
+        max-width: none;
+        margin: 0 auto 15px;
+    }
+
+    .tetris-game .timer-label {
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   ОСНОВА ИГРОВОГО ПОЛЯ
+======================================== */
+
+.tetris-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.heart-puzzle-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px auto 25px;
+}
+
+.heart-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+
+    width: min(70vw, 540px);
+    aspect-ratio: 13 / 11;
+
+    gap: 3px;
+}
+
+.heart-cell {
+    min-width: 0;
+    min-height: 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.target-cell {
+    background: #251936;
+    border: 1px solid #a45acdaa;
+    box-shadow: inset 0 0 5px #a45acb33;
+}
+
+.outside-cell {
+    visibility: hidden;
+}
+
+/* ========================================
+   ПАНЕЛЬ ФИГУР
+======================================== */
+
+.tetris-pieces-panel {
+    width: 100%;
+    max-width: 650px;
+    margin: 10px auto;
+}
+
+.pieces-title {
+    color: #e5ccff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.tetris-pieces {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 15px;
+}
+
+.piece-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: auto;
+    height: auto;
+
+    padding: 8px;
+
+    border: none;
+    border-radius: 0;
+    background: transparent;
+
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+.piece-option:active {
+    cursor: grabbing;
+}
+
+.piece-preview {
+    display: grid;
+    gap: 3px;
+    justify-content: center;
+    align-content: center;
+}
+
+.piece-preview span {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+}
+
+.piece-preview span {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+}
+
+/* Цвета фигур */
+
+.piece-option:nth-child(1) span { background: #E89B55; }
+.piece-option:nth-child(2) span { background: #62A9E8; }
+.piece-option:nth-child(3) span { background: #B57BE5; }
+.piece-option:nth-child(4) span { background: #65C9A4; }
+.piece-option:nth-child(5) span { background: #E879A5; }
+.piece-option:nth-child(6) span { background: #E8CE68; }
+.piece-option:nth-child(7) span { background: #8D91EF; }
+
+.pieces-hint {
+    color: #bda9d2;
+    font-size: 13px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media (max-width: 600px) {
+
+    .heart-grid {
+        width: 92vw;
+        gap: 2px;
+    }
+
+    .heart-cell {
+        border-radius: 2px;
+    }
+
+    .tetris-pieces {
+        gap: 8px;
+        padding: 8px 2px;
+    }
+
+    .piece-option {
+        width: 58px;
+        height: 58px;
+    }
+
+    .piece-preview {
+        grid-template-columns: repeat(4, 11px);
+        grid-template-rows: repeat(4, 11px);
+        gap: 2px;
+    }
+
+    .piece-preview span {
+        width: 11px;
+        height: 11px;
+    }
+
+}
+
+.placed-piece-layer {
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    gap: 3px;
+
+    pointer-events: none;
+}
+
+.placed-piece {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    gap: 3px;
+
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+
+    pointer-events: none;
+}
+
+.placed-block {
+    border-radius: 4px;
+    pointer-events: auto;
+    cursor: grab;
+    touch-action: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 5px #ffffff44;
+}
+
+.drag-preview {
+    position: fixed;
+    z-index: 1000;
+    display: grid;
+    gap: 3px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0.85;
+}
+
+.drag-preview span {
+    border-radius: 3px;
+    box-shadow: inset 0 0 5px #ffffff44;
+}
+
+.placed-block:hover {
+    filter: brightness(1.2);
+}
+.piece-option {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.piece-option span {
+    pointer-events: auto;
+    cursor: grab;
+}
+
+.placed-block {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.tetris-feedback.success {
+    color: #a9f5c5;
+}
+
+.tetris-feedback.failure {
+    color: #ff9999;
+}
+
+.placement-preview-layer {
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+
+    gap: 3px;
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+.placement-preview-cell {
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    transition:
+        background 0.08s ease,
+        border 0.08s ease;
+}
+
+
+.piece-option {
+    position: relative;
+    overflow: visible;
+    padding-top: 32px;
+}
+
+.piece-rotate {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #a45acb88;
+    border-radius: 50%;
+
+    background: #352044;
+    color: #fff;
+
+    font-size: 17px;
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+.piece-rotate:hover {
+    background: #70449a;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.piece-rotate:active {
+    background: #9560bd;
+}
+
+.piece-rotate {
+    touch-action: manipulation;
+}
+
+/* ========================================
+   ПЕРЕКРАШИВАНИЕ СЕРДЦА ПОСЛЕ ПОБЕДЫ
+======================================== */
+
+
+/* Плавная постоянная перекраска сердца */
+
+.placed-block {
+    transition: background-color 1.8s ease;
+}
+
+/* ========================================
+   ФИНАЛ ЧЕТВЁРТОЙ ИГРЫ
+======================================== */
+
+.tetris-finale {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    margin-top: 25px;
+
+    text-align: center;
+    opacity: 0;
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.tetris-finale.show {
+    display: flex;
+    animation: tetrisFinaleAppear 0.8s ease forwards;
+}
+
+.tetris-finale h2 {
+    color: #D94A65;
+    margin: 0;
+}
+
+.tetris-finale p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.back-button {
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #D94A65;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.back-button:hover {
+    background: #c83d59;
+    transform: scale(1.04);
+}
+
+@keyframes tetrisFinaleAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Подсветка неправильных букв */
+.wrong-character {
+    color: #ffffff;
+    background: rgba(255, 55, 85, 0.4);
+    border-radius: 3px;
+    box-shadow: 0 0 7px rgba(255, 55, 85, 0.35);
+    text-shadow: 0 0 5px rgba(255, 55, 85, 0.7);
+}
+
+
+/* ========================================
+   ФИНАЛЬНОЕ МОДАЛЬНОЕ ОКНО
+======================================== */
+
+.tetris-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(5, 4, 18, 0.82);
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+.tetris-modal.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.tetris-modal-content {
+    width: min(100%, 430px);
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        145deg,
+        #21152f,
+        #120e24
+    );
+
+    border: 1px solid rgba(255, 125, 180, 0.5);
+    border-radius: 24px;
+
+    box-shadow:
+        0 0 25px rgba(255, 75, 145, 0.2),
+        0 0 70px rgba(150, 80, 255, 0.15);
+
+    transform: translateY(25px) scale(0.95);
+    transition: transform 0.6s ease;
+}
+
+.tetris-modal.show .tetris-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.tetris-modal-heart {
+    font-size: 55px;
+    margin-bottom: 15px;
+
+    filter: drop-shadow(0 0 15px #ff559b);
+}
+
+.tetris-modal-content h2 {
+    color: #ffb1d0;
+    margin-bottom: 15px;
+}
+
+.tetris-modal-content p {
+    color: #ded0ed;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* ШРИФТЫ */
+
+.stars4-page {
+    font-family: 'Lora', serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+}
+
+button {
+    font-family: 'Lora', serif;
+}
+
+/* РУКОПИСНЫЙ ШРИФТ ПЕРВОЙ ИГРЫ */
+
+.text-preview,
+#typingInput {
+    font-family: 'Caveat', cursive;
+}
+
+/* ФИКСИРОВАННЫЙ РАЗМЕР ПАНЕЛИ ФИГУР НА ПК */
+
+.piece-option {
+    width: 82px;
+    height: 105px;
+    flex: 0 0 82px;
+    box-sizing: border-box;
+}
+
+/* Сохраняем размеры мобильной версии */
+
+@media (max-width: 600px) {
+    .piece-option {
+        width: 58px;
+        height: 58px;
+        flex: 0 0 58px;
+    }
+}

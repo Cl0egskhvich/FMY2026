@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найди всё, что нас связывает 💖</title>
+
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="stars3.css">
+    <link rel="stylesheet" href="../../../progress.css">
+</head>
+
+<body class="stars3-page">
+
+    <!-- Космический фон -->
+    <div class="stars3-background" aria-hidden="true"></div>
+
+    <main class="game-page">
+
+        <header class="game-header">
+
+            <div class="title-copy">
+                <div class="header-eyebrow">
+                    <span class="eyebrow-star">✦</span>
+                    ПОИСК ПРЕДМЕТОВ
+                    <span class="eyebrow-star">✦</span>
+                </div>
+
+                <h1>Найди всё, что нас связывает <span>💖</span></h1>
+
+                <p class="header-subtitle">
+                    Даже самые маленькие детали хранят большие воспоминания
+                </p>
+            </div>
+
+            <div class="timer" aria-label="Время прохождения">
+                <span class="timer-label">Время поиска</span>
+                <span id="timer">00:00</span>
+            </div>
+
+        </header>
+
+        <section class="game-layout" aria-label="Игра по поиску предметов">
+
+            <div class="scene-frame">
+
+
+                <div class="game-scene" id="gameScene">
+
+                    <img class="room-background"
+                         src="images/room/background.png"
+                         alt="Комната"
+                         draggable="false">
+
+                    <div class="hotspots-layer" id="hotspotsLayer"></div>
+
+                </div>
+
+                <div class="scene-bottom-decoration">
+                    <span class="decoration-line"></span>
+                    <span>Присмотрись внимательнее...</span>
+                    <span class="decoration-line"></span>
+                </div>
+
+            </div>
+
+            <aside class="found-panel">
+
+                <div class="found-panel-decoration">✧</div>
+
+                <div class="found-heading">
+                    <div>
+                        <span class="panel-eyebrow">ТВОИ НАХОДКИ</span>
+                        <h2>Найдено</h2>
+                    </div>
+
+                    <span id="foundCount">0 / 8</span>
+                </div>
+
+                <div class="found-divider"></div>
+
+                <div class="found-grid" id="foundGrid" aria-live="polite">
+                    <!-- Восемь ячеек создаются скриптом -->
+                </div>
+
+                <div class="found-footer">
+                    <span>Каждая находка особенная</span>
+                    <span>♥</span>
+                </div>
+
+            </aside>
+
+        </section>
+
+        <div class="hint-area" id="hintArea" aria-live="polite">
+
+            <div class="hint-card" id="hintCard" hidden>
+                <span class="hint-title">Попробуй поискать это:</span>
+                <img id="hintImage" src="" alt="Подсказка">
+            </div>
+
+        </div>
+
+    </main>
+
+    <section class="completion-screen" id="completionScreen" aria-hidden="true">
+
+        <div class="completion-card">
+
+            <div class="completion-heart">♥</div>
+
+            <h2>Молодец, ты справилась!</h2>
+
+            <p>Ты нашла всё, что нас связывает 💖</p>
+
+            <button id="backButton" type="button">
+                Вернуться назад
+            </button>
+
+        </div>
+
+    </section>
+    <script src="../../../progress.js"></script>
+    <script src="stars3.js"></script>
+
+</body>
+</html>

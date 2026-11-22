@@ -1,0 +1,80 @@
+
+/* ========================================
+   АНИМАЦИЯ ПОЛУЧЕНИЯ СЕРДЦА
+======================================== */
+
+.ops-heart-reward {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 22px;
+
+    background: rgba(235, 225, 255, 0.97);
+    border: 1px solid rgba(180, 150, 230, 0.55);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(130, 95, 190, 0.22);
+
+    opacity: 0;
+    transform: translate(-50%, -20px) scale(0.9);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ops-heart-reward.show {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+}
+
+.ops-heart-reward-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ops-heart-reward-number {
+    color: #e84b83;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.ops-heart-reward-label {
+    color: #8c4966;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ops-heart-reward-icon {
+    font-size: 32px;
+    display: inline-block;
+    animation: heartFloat 1s ease-in-out infinite;
+}
+
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(-9px) rotate(8deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .ops-heart-reward {
+        top: 15px;
+        padding: 12px 17px;
+        gap: 10px;
+        white-space: nowrap;
+    }
+}

@@ -1,0 +1,1023 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@400;500;600;700&display=swap');
+
+:root {
+    --game-text: #fff8ff;
+    --game-muted: #c8badf;
+    --game-panel: rgba(25, 19, 46, 0.88);
+    --game-border: rgba(192, 163, 255, 0.27);
+    --game-accent: #e6a9f4;
+    --game-blue: #87cfff;
+    --game-purple: #b99aff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.stars3-page {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--game-text);
+    background: #090817;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   КОСМИЧЕСКИЙ ФОН
+======================================== */
+
+.stars3-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+
+    background:
+        radial-gradient(ellipse at 12% 18%,
+            rgba(106, 66, 174, 0.25), transparent 35%),
+
+        radial-gradient(ellipse at 88% 24%,
+            rgba(48, 93, 165, 0.20), transparent 32%),
+
+        radial-gradient(ellipse at 52% 100%,
+            rgba(118, 55, 143, 0.18), transparent 42%),
+
+        radial-gradient(ellipse at 50% 45%,
+            rgba(35, 25, 70, 0.35), transparent 65%),
+
+        #090817;
+}
+
+/* Мелкие звёзды */
+
+.stars3-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+    background: #ffffff;
+
+    box-shadow:
+        45px 78px #ffffff,
+        110px 215px #b9caff,
+        180px 45px #ffffff,
+        245px 340px #ffffff,
+        310px 130px #c8baff,
+        390px 65px #ffffff,
+        455px 250px #ffffff,
+        520px 105px #b9caff,
+        590px 390px #ffffff,
+        650px 180px #ffffff,
+        720px 55px #d6caff,
+        790px 290px #ffffff,
+        850px 130px #ffffff,
+        920px 370px #b9caff,
+        990px 80px #ffffff,
+        1050px 240px #ffffff,
+        1120px 150px #c8baff,
+        1190px 420px #ffffff,
+        1270px 90px #ffffff,
+        1350px 300px #ffffff,
+        1420px 170px #b9caff,
+        1500px 390px #ffffff,
+        1570px 70px #ffffff,
+        1640px 260px #c8baff,
+        1710px 120px #ffffff,
+        1780px 340px #ffffff,
+        1850px 60px #b9caff,
+        1920px 230px #ffffff,
+
+        80px 480px #ffffff,
+        220px 570px #b9caff,
+        360px 650px #ffffff,
+        490px 520px #ffffff,
+        610px 740px #c8baff,
+        760px 580px #ffffff,
+        900px 690px #ffffff,
+        1040px 530px #b9caff,
+        1170px 760px #ffffff,
+        1320px 610px #ffffff,
+        1460px 720px #c8baff,
+        1600px 550px #ffffff,
+        1740px 680px #ffffff,
+        1880px 510px #b9caff,
+
+        130px 850px #ffffff,
+        280px 960px #c8baff,
+        430px 830px #ffffff,
+        570px 1030px #ffffff,
+        710px 900px #b9caff,
+        870px 1000px #ffffff,
+        1010px 850px #ffffff,
+        1160px 970px #c8baff,
+        1300px 860px #ffffff,
+        1450px 1020px #ffffff,
+        1600px 880px #b9caff,
+        1750px 990px #ffffff,
+        1900px 840px #ffffff;
+
+    opacity: 0.65;
+
+    animation: starsTwinkle 5s ease-in-out infinite alternate;
+}
+
+/* Более крупные и яркие звёзды */
+
+.stars3-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+    background: #ffffff;
+
+    box-shadow:
+        150px 150px 5px 1px rgba(255,255,255,0.7),
+        390px 420px 6px 1px rgba(180,200,255,0.7),
+        620px 230px 5px 1px rgba(255,255,255,0.6),
+        900px 110px 7px 1px rgba(215,190,255,0.8),
+        1180px 320px 6px 1px rgba(255,255,255,0.7),
+        1450px 180px 5px 1px rgba(180,210,255,0.7),
+        1700px 440px 7px 1px rgba(255,255,255,0.7),
+
+        240px 700px 6px 1px rgba(210,190,255,0.7),
+        520px 850px 5px 1px rgba(255,255,255,0.7),
+        800px 720px 7px 1px rgba(160,195,255,0.7),
+        1080px 900px 5px 1px rgba(255,255,255,0.6),
+        1370px 760px 7px 1px rgba(215,190,255,0.7),
+        1660px 950px 5px 1px rgba(255,255,255,0.7);
+
+    animation: brightStars 4s ease-in-out infinite alternate;
+}
+
+@keyframes starsTwinkle {
+    from {
+        opacity: 0.35;
+    }
+
+    to {
+        opacity: 0.85;
+    }
+}
+
+@keyframes brightStars {
+    from {
+        opacity: 0.45;
+        filter: brightness(0.8);
+    }
+
+    to {
+        opacity: 1;
+        filter: brightness(1.5);
+    }
+}
+
+/* ========================================
+   ОСНОВНАЯ СТРАНИЦА
+======================================== */
+
+.game-page {
+    position: relative;
+    z-index: 1;
+
+    width: min(1500px, 96vw);
+    margin: 0 auto;
+
+    padding: clamp(20px, 3vw, 42px) 0 24px;
+}
+
+/* ========================================
+   ЗАГОЛОВОК
+======================================== */
+
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+    margin-bottom: clamp(20px, 2.5vw, 32px);
+}
+
+.title-copy {
+    min-width: 0;
+}
+
+.header-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 10px;
+
+    color: #bda4e8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.eyebrow-star {
+    color: #f2b5e9;
+    font-size: 14px;
+    text-shadow: 0 0 10px #e6a9f4;
+}
+
+.game-header h1 {
+    margin: 0;
+
+    color: var(--game-text);
+
+    font-size: clamp(23px, 3vw, 40px);
+    line-height: 1.15;
+    font-weight: 700;
+
+    text-shadow:
+        0 0 12px rgba(202, 155, 255, 0.35),
+        0 0 35px rgba(155, 112, 220, 0.18);
+}
+
+.game-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    margin-bottom: clamp(20px, 2.5vw, 32px);
+}
+
+.title-copy {
+    width: 100%;
+    text-align: center;
+}
+
+.header-eyebrow {
+    justify-content: center;
+}
+
+.game-header h1 {
+    text-align: center;
+}
+
+.header-subtitle {
+    text-align: center;
+}
+
+.timer {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-subtitle {
+    margin: 11px 0 0;
+
+    color: var(--game-muted);
+    font-size: clamp(12px, 1.2vw, 15px);
+    letter-spacing: 0.2px;
+}
+
+/* ========================================
+   ТАЙМЕР
+======================================== */
+
+.timer {
+    flex: 0 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    min-width: 112px;
+    padding: 13px 19px;
+
+    border: 1px solid rgba(193, 165, 255, 0.35);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(53, 37, 83, 0.85),
+            rgba(25, 20, 49, 0.9)
+        );
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        0 0 22px rgba(166, 123, 235, 0.12),
+        inset 0 0 18px rgba(255, 255, 255, 0.025);
+
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-label {
+    color: #c6b5e2;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#timer {
+    color: #f4d8ff;
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    text-shadow: 0 0 12px rgba(220, 174, 255, 0.55);
+}
+
+/* ========================================
+   ИГРОВАЯ ОБЛАСТЬ
+======================================== */
+
+.game-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 4.5fr)
+        minmax(160px, 1fr);
+
+    gap: clamp(14px, 1.7vw, 24px);
+    align-items: stretch;
+}
+
+/* ========================================
+   КОМНАТА
+======================================== */
+
+.scene-frame {
+    position: relative;
+    min-width: 0;
+    align-self: start;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(202, 173, 255, 0.42);
+    border-radius: 18px;
+
+    background: rgba(24, 18, 43, 0.9);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.38),
+        0 0 25px rgba(151, 112, 220, 0.19),
+        0 0 65px rgba(108, 96, 204, 0.09),
+        inset 0 0 25px rgba(198, 164, 255, 0.045);
+}
+
+.scene-top-decoration {
+    min-height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    padding: 8px 12px;
+
+    color: #cbb5ee;
+    background: rgba(29, 22, 52, 0.96);
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.scene-top-decoration span:first-child,
+.scene-top-decoration span:last-child {
+    color: #f2b3e9;
+    font-size: 13px;
+    text-shadow: 0 0 9px #e6a9f4;
+}
+
+.game-scene {
+    position: relative;
+    width: 100%;
+
+    aspect-ratio: 1280 / 508;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    background: #1a1428;
+}
+
+.room-background {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+.hotspots-layer {
+    position: absolute;
+    inset: 0;
+}
+
+.hotspot {
+    position: absolute;
+
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+    transform-origin: center;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hotspot img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+.hotspot.found {
+    display: none;
+}
+
+.scene-bottom-decoration {
+    min-height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    padding: 8px 12px;
+
+    color: #bca9d8;
+    background: rgba(26, 20, 47, 0.96);
+
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+.decoration-line {
+    width: clamp(20px, 6vw, 75px);
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(191, 159, 242, 0.55)
+    );
+}
+
+/* ========================================
+   ПАНЕЛЬ НАЙДЕННЫХ ПРЕДМЕТОВ
+======================================== */
+
+.found-panel {
+    position: relative;
+
+    min-width: 0;
+    padding: clamp(13px, 1.4vw, 20px);
+
+    overflow: hidden;
+
+    border: 1px solid rgba(192, 163, 255, 0.3);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            155deg,
+            rgba(40, 29, 66, 0.94),
+            rgba(21, 17, 40, 0.95)
+        );
+
+    box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.28),
+        0 0 28px rgba(155, 119, 221, 0.1),
+        inset 0 0 25px rgba(255, 255, 255, 0.025);
+}
+
+.found-panel-decoration {
+    position: absolute;
+    top: 9px;
+    right: 13px;
+
+    color: rgba(221, 184, 255, 0.65);
+    font-size: 23px;
+
+    text-shadow: 0 0 12px #b99aff;
+}
+
+.found-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    margin-bottom: 10px;
+}
+
+.panel-eyebrow {
+    color: #b9a0e3;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.found-heading h2 {
+    margin: 2px 0 0;
+
+    color: var(--game-text);
+    font-size: clamp(18px, 1.8vw, 23px);
+}
+
+#foundCount {
+    color: #f3b5e2;
+
+    font-size: clamp(23px, 2.4vw, 30px);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+
+    text-shadow: 0 0 14px rgba(243, 181, 226, 0.3);
+}
+
+.found-description {
+    margin: 10px 0 14px;
+
+    color: #bfb0d4;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.found-divider {
+    width: 100%;
+    height: 1px;
+
+    margin-bottom: 14px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(195, 161, 242, 0.5),
+        transparent
+    );
+}
+
+.found-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(7px, 0.8vw, 11px);
+}
+
+.found-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border: 1px dashed rgba(204, 180, 244, 0.38);
+    border-radius: 11px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(153, 122, 205, 0.10),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.found-slot img {
+    display: block;
+
+    width: 86%;
+    height: 86%;
+
+    object-fit: contain;
+
+    opacity: 0;
+    transform: scale(0.8);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.found-slot.filled {
+    border-style: solid;
+    border-color: rgba(242, 180, 231, 0.65);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(238, 171, 228, 0.17),
+            rgba(137, 104, 186, 0.10)
+        );
+
+    box-shadow:
+        0 0 13px rgba(220, 153, 231, 0.12),
+        inset 0 0 12px rgba(255, 255, 255, 0.035);
+}
+
+.found-slot.filled img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.found-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 17px;
+    padding-top: 11px;
+
+    border-top: 1px solid rgba(198, 171, 237, 0.13);
+
+    color: #b9a8d0;
+    font-size: 10px;
+    font-style: italic;
+}
+
+.found-footer span:last-child {
+    color: #f1a9d5;
+    font-size: 15px;
+    text-shadow: 0 0 9px #f1a9d5;
+}
+
+/* ========================================
+   ПОДСКАЗКА
+======================================== */
+
+.hint-area {
+    min-height: 100px;
+    margin-top: 16px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.hint-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    max-width: min(350px, 90vw);
+    padding: 12px 16px;
+
+    border: 1px solid rgba(220, 174, 255, 0.45);
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(43, 29, 69, 0.97),
+            rgba(26, 21, 49, 0.97)
+        );
+
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.28),
+        0 0 22px rgba(196, 151, 255, 0.12);
+
+    animation: hintAppear 0.35s ease both;
+}
+
+.hint-card[hidden] {
+    display: none;
+}
+
+.hint-title {
+    color: #d5c6e9;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.hint-card img {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+
+    object-fit: contain;
+
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ========================================
+   НИЖНЯЯ ПОДПИСЬ
+======================================== */
+
+.page-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 4px;
+
+    color: rgba(191, 174, 221, 0.55);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.page-footer span {
+    color: #c7a4ef;
+    text-shadow: 0 0 9px #a87be8;
+}
+
+/* ========================================
+   ЗАВЕРШЕНИЕ ИГРЫ
+======================================== */
+
+.completion-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(8, 5, 18, 0.86);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.65s ease,
+        visibility 0.65s ease;
+}
+
+.completion-screen.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.completion-card {
+    width: min(460px, 100%);
+    padding: clamp(26px, 5vw, 44px);
+
+    border: 1px solid rgba(245, 184, 220, 0.42);
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(47, 32, 70, 0.98),
+            rgba(25, 18, 43, 0.98)
+        );
+
+    text-align: center;
+
+    box-shadow:
+        0 18px 65px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(219, 139, 205, 0.18);
+
+    transform: translateY(18px) scale(0.97);
+    transition: transform 0.65s ease;
+}
+
+.completion-screen.visible .completion-card {
+    transform: translateY(0) scale(1);
+}
+
+.completion-heart {
+    color: #ff9dce;
+    font-size: 42px;
+
+    text-shadow:
+        0 0 15px rgba(255, 157, 206, 0.7),
+        0 0 30px rgba(255, 157, 206, 0.35);
+}
+
+.completion-card h2 {
+    margin: 12px 0 8px;
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+.completion-card p {
+    margin: 0 0 24px;
+    color: var(--game-muted);
+}
+
+#backButton {
+    padding: 12px 22px;
+
+    border: 0;
+    border-radius: 999px;
+
+    color: #2a1730;
+
+    background: linear-gradient(
+        100deg,
+        #ffc0df,
+        #d7bdff
+    );
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 18px rgba(235, 166, 218, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+#backButton:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+/* ========================================
+   АНИМАЦИИ
+======================================== */
+
+@keyframes hintAppear {
+    from {
+        opacity: 0;
+        transform: translateY(9px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   АДАПТАЦИЯ ПОД ТЕЛЕФОНЫ
+======================================== */
+
+@media (max-width: 700px) {
+
+    .game-page {
+        width: min(96vw, 620px);
+        padding-top: 22px;
+    }
+
+    .game-header {
+    justify-content: center;
+    padding-bottom: 65px;
+    }
+
+    .game-header h1 {
+        max-width: 100%;
+    }
+
+    .timer {
+        top: auto;
+        bottom: 0;
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .header-eyebrow {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+        max-width: 95%;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+
+    .timer {
+        min-width: 80px;
+        padding: 9px 10px;
+        border-radius: 12px;
+    }
+
+    .timer-label {
+        font-size: 9px;
+    }
+
+    #timer {
+        font-size: 18px;
+    }
+
+    .game-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 13px;
+    }
+
+    .scene-frame {
+        border-radius: 13px;
+    }
+
+    .scene-top-decoration {
+        min-height: 30px;
+        font-size: 7px;
+        letter-spacing: 1.2px;
+        gap: 7px;
+    }
+
+    .scene-bottom-decoration {
+        min-height: 30px;
+        font-size: 10px;
+    }
+
+    .found-panel {
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+
+    .found-heading {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .found-description {
+        margin: 5px 0 10px;
+    }
+
+    .found-divider {
+        margin-bottom: 10px;
+    }
+
+    .found-grid {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .found-slot {
+        border-radius: 7px;
+    }
+
+    .found-footer {
+        margin-top: 10px;
+        padding-top: 8px;
+    }
+
+    .hint-area {
+        min-height: 82px;
+        margin-top: 12px;
+    }
+
+    .page-footer {
+        margin-top: 0;
+        font-size: 8px;
+        letter-spacing: 1.3px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .game-header {
+        flex-wrap: wrap;
+    }
+
+    .title-copy {
+        width: 100%;
+    }
+
+    .timer {
+        flex-direction: row;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .found-grid {
+        gap: 4px;
+    }
+}

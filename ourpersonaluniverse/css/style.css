@@ -1,0 +1,897 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Serif+Display&family=Lora:wght@400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080a18;
+    color: #ffffff;
+    font-family: 'Lora', serif;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 500;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 30px;
+}
+
+.content {
+    max-width: 650px;
+    animation: appear 1.5s ease;
+}
+
+.subtitle {
+    color: #c3a7e8;
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(48px, 10vw, 90px);
+    font-weight: 400;
+    margin-bottom: 25px;
+    text-shadow: 0 0 35px #a77be866;
+}
+
+.description {
+    color: #b9b8ca;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+button {
+    background: transparent;
+    border: 1px solid #a98bc9;
+    border-radius: 30px;
+    padding: 17px 30px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+button:hover {
+    background: #a98bc9;
+    box-shadow: 0 0 30px #a98bc955;
+}
+
+button span {
+    margin-left: 12px;
+}
+
+.scroll-hint {
+    position: fixed;
+    bottom: 25px;
+    color: #85849d;
+    font-size: 12px;
+}
+
+.arrow {
+    margin-top: 20px;
+    font-size: 50px;
+    animation: float 1s infinite;
+}
+
+.memories {
+    min-height: 70vh;
+    padding: 100px 25px;
+    text-align: center;
+    background: #0d1021;
+}
+
+.memories h2 {
+    font-size: clamp(25px, 5vw, 40px);
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.memories p:last-child {
+    color: #aaa9bd;
+    line-height: 1.8;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/*--------------------------------------------------------------*/
+
+/* ЗВЁЗДНОЕ НЕБО */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Маленькие звёзды */
+
+.stars::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    top: 10%;
+    left: 15%;
+    border-radius: 50%;
+    background: #ffffff;
+
+    box-shadow:
+        100px 80px #ffffff,
+        250px 160px #c9c5ff,
+        400px 40px #ffffff,
+        550px 220px #ffffff,
+        700px 100px #c9c5ff,
+        850px 300px #ffffff,
+        1000px 150px #ffffff,
+        1150px 50px #c9c5ff,
+        1300px 250px #ffffff,
+        150px 450px #ffffff,
+        350px 600px #c9c5ff,
+        600px 500px #ffffff,
+        800px 650px #ffffff,
+        1050px 550px #c9c5ff,
+        1250px 700px #ffffff;
+
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+/* Светящиеся частицы */
+
+.stars::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+
+    background:
+        radial-gradient(circle, #bca5ff55 1px, transparent 3px),
+        radial-gradient(circle, #ffffff44 1px, transparent 3px),
+        radial-gradient(circle, #8e9dff44 2px, transparent 5px);
+
+    background-size:
+        180px 180px,
+        260px 260px,
+        340px 340px;
+
+    background-position:
+        0 0,
+        80px 120px,
+        150px 60px;
+
+    animation: particlesMove 60s linear infinite;
+}
+
+/* Мерцание звёзд */
+
+@keyframes twinkle {
+    from {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Медленное движение частиц */
+
+@keyframes particlesMove {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(100px, 150px);
+    }
+}
+
+/* Содержимое должно быть поверх звёзд */
+
+.content,
+.scroll-hint,
+.memories > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ФОТОГАЛЕРЕЯ */
+
+/* ВЕРТИКАЛЬНАЯ ФОТОМОЗАИКА */
+
+.gallery {
+    max-width: 1100px;
+    margin: 70px auto 0;
+
+    columns: 3;
+    column-gap: 25px;
+}
+
+.photo-card {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 25px;
+
+    background: #15152b;
+    border: 1px solid #a98bc933;
+    border-radius: 15px;
+    overflow: hidden;
+
+    break-inside: avoid;
+    transition: 0.4s;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px #a98bc944;
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.photo-card p {
+    padding: 20px 15px;
+    color: #d4c5e9;
+    line-height: 1.6;
+}
+
+/* Адаптация под экраны */
+
+@media (max-width: 800px) {
+    .gallery {
+        columns: 2;
+    }
+}
+
+@media (max-width: 550px) {
+    .gallery {
+        columns: 1;
+    }
+}
+
+/* УВЕЛИЧЕННЫЙ ПРОСМОТР ФОТОГРАФИЙ */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(3, 4, 15, 0.92);
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.4s;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: 85%;
+    max-height: 85vh;
+
+    object-fit: contain;
+    border-radius: 12px;
+
+    box-shadow: 0 0 50px #a98bc955;
+
+    transform: scale(0.8);
+    transition: 0.4s;
+}
+
+.lightbox.active img {
+    transform: scale(1);
+}
+
+/* Кнопка закрытия */
+
+.close-lightbox {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 40px;
+
+    cursor: pointer;
+}
+
+
+/* СЧЁТЧИК ВРЕМЕНИ */
+
+.counter-section {
+    min-height: 75vh;
+    padding: 110px 25px;
+    text-align: center;
+    position: relative;
+}
+
+.counter-section h2 {
+    font-size: clamp(28px, 5vw, 45px);
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.counter-description {
+    color: #aaa9bd;
+    line-height: 1.8;
+    margin-bottom: 55px;
+}
+
+.counter-container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 45px 30px;
+
+    background: rgba(21, 21, 43, 0.55);
+    border: 1px solid #a98bc944;
+    border-radius: 25px;
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 0 30px #a98bc911,
+        inset 0 0 30px #a98bc908;
+}
+
+.counter-main {
+    margin-bottom: 40px;
+}
+
+.counter-main span {
+    display: block;
+    font-size: clamp(65px, 12vw, 100px);
+    font-weight: 300;
+    color: #e0caff;
+    text-shadow: 0 0 35px #a98bc977;
+    font-variant-numeric: tabular-nums;
+}
+
+.counter-main p {
+    color: #c3a7e8;
+    letter-spacing: 4px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.counter-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.counter-item span {
+    display: block;
+    color: #ffffff;
+    font-size: 30px;
+    font-variant-numeric: tabular-nums;
+}
+
+.counter-item p {
+    color: #aaa9bd;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.counter-footer {
+    margin-top: 40px;
+    color: #c3a7e8;
+    font-style: normal;
+    font-size: 12px;
+}
+
+@media (max-width: 550px) {
+    .counter-container {
+        padding: 35px 15px;
+    }
+
+    .counter-details {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 30px;
+    }
+}
+
+
+/* ПЕРЕКЛЮЧЕНИЕ СЧЁТЧИКА */
+
+.counter-container {
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.counter-container.switching {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+}
+
+.counter-container:focus-visible {
+    outline: 2px solid #c3a7e8;
+    outline-offset: 6px;
+}
+
+.counter-hint {
+    color: #85849d;
+    font-size: 11px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+}
+
+.counter-details.three-items {
+    grid-template-columns: repeat(3, 1fr);
+}
+/*------------------------------------------------*/
+/* ФИНАЛЬНЫЙ РЕБУС */
+
+.riddle-section {
+    padding: 100px 25px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.riddle-section .subtitle {
+    font-size: 14px;
+}
+
+.riddle-section h2 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.riddle-description {
+    color: #b9b8ca;
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+/* ТРИ КАРТИНКИ */
+
+.riddle-grid {
+    max-width: 850px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: clamp(10px, 3vw, 30px);
+}
+
+.riddle-card {
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+
+    background: #15152b;
+    border: 1px solid #a98bc933;
+    border-radius: 15px;
+
+    color: white;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    transition: 0.3s;
+}
+
+.riddle-card:hover {
+    background: #20203a;
+    border-color: #a98bc9;
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #a98bc933;
+}
+
+.riddle-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+
+    background: white;
+    border-radius: 10px;
+
+    display: block;
+}
+
+.riddle-card span {
+    font-size: clamp(10px, 2vw, 15px);
+    color: #d4c5e9;
+}
+
+.riddle-hint {
+    color: #85849d;
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 25px auto 45px;
+}
+
+/*------------------------------------------------*/
+/* ПОЛЕ ОТВЕТА */
+
+.riddle-answer {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.riddle-question {
+    color: #d4c5e9;
+    margin-bottom: 20px;
+}
+
+.riddle-answer input {
+    width: 100%;
+    padding: 16px 20px;
+
+    background: #15152b;
+    border: 1px solid #a98bc955;
+    border-radius: 30px;
+
+    color: white;
+    font-size: 15px;
+    text-align: center;
+
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.riddle-answer input::placeholder {
+    color: #85849d;
+}
+
+.riddle-answer input:focus {
+    border-color: #c3a7e8;
+    box-shadow: 0 0 20px #a98bc933;
+}
+
+/* НЕПРАВИЛЬНЫЙ ОТВЕТ */
+
+.riddle-answer input.error {
+    border-color: #ff5555;
+    box-shadow: 0 0 20px #ff333355;
+    animation: riddleShake 0.4s ease;
+}
+
+@keyframes riddleShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    20%, 60% {
+        transform: translateX(-7px);
+    }
+
+    40%, 80% {
+        transform: translateX(7px);
+    }
+}
+
+/* ПРАВИЛЬНЫЙ ОТВЕТ */
+
+.riddle-answer input.success {
+    border-color: #c3a7e8;
+    box-shadow:
+        0 0 12px #c3a7e8,
+        0 0 30px #a98bc9aa;
+}
+
+/* СООБЩЕНИЕ */
+
+#riddleMessage {
+    min-height: 25px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #d4c5e9;
+}
+
+/* КНОПКИ */
+
+#checkRiddle,
+#secretButton {
+    margin-top: 20px;
+}
+
+#secretButton {
+    background: #a98bc9;
+    border-color: #a98bc9;
+    color: white;
+}
+
+#secretButton:hover {
+    background: #9272b5;
+    box-shadow: 0 0 30px #a98bc955;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.riddle-footer {
+    margin-top: 70px;
+    color: #85849d;
+    font-size: 13px;
+}
+
+/*------------------------------------------------*/
+/* ОКНО ПОДСКАЗКИ */
+
+.riddle-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(3, 4, 15, 0.92);
+    backdrop-filter: blur(8px);
+
+    z-index: 1100;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.35s, visibility 0.35s;
+}
+
+.riddle-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* УВЕЛИЧЕННАЯ КАРТОЧКА */
+
+.riddle-modal-card {
+    position: relative;
+
+    width: min(500px, 90vw);
+    height: min(500px, 75vh);
+
+    perspective: 1200px;
+
+    transform: scale(0.65);
+    transition: transform 0.45s ease;
+}
+
+.riddle-modal.active .riddle-modal-card {
+    transform: scale(1);
+}
+
+/* ВНУТРЕННЯЯ ЧАСТЬ КАРТОЧКИ */
+
+.riddle-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.riddle-modal.active .riddle-flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* ОБЕ СТОРОНЫ */
+
+.riddle-face {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background: #15152b;
+    border: 1px solid #a98bc955;
+    border-radius: 20px;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    overflow: hidden;
+}
+
+/* ЛИЦЕВАЯ СТОРОНА */
+
+.riddle-front img {
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    background: white;
+    border-radius: 12px;
+}
+
+/* ОБРАТНАЯ СТОРОНА */
+
+.riddle-back {
+    transform: rotateY(180deg);
+}
+
+.riddle-back p {
+    color: #d4c5e9;
+    font-size: clamp(17px, 4vw, 23px);
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* КРЕСТИК */
+
+.riddle-modal-close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+
+    z-index: 5;
+
+    background: transparent;
+    border: none;
+
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/*------------------------------------------------*/
+/* ТЕЛЕФОНЫ */
+
+@media (max-width: 550px) {
+
+    .riddle-section {
+        padding: 75px 12px;
+    }
+
+    .riddle-grid {
+        gap: 8px;
+    }
+
+    .riddle-card {
+        padding: 6px;
+        border-radius: 10px;
+        gap: 8px;
+    }
+
+    .riddle-modal-card {
+        width: 90vw;
+        height: 65vh;
+    }
+
+    .riddle-face {
+        padding: 15px;
+    }
+
+}
+
+
+/* ==========================================
+   OPS — ТИПОГРАФИКА
+========================================== */
+
+
+
+/* Основные описания */
+
+.description,
+.memories p,
+.photo-card p,
+.counter-description,
+.riddle-description,
+.riddle-hint,
+.riddle-question,
+.riddle-footer,
+.riddle-back p {
+    font-family: 'Lora', serif;
+}
+
+/* Кнопки */
+
+button {
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Поля ввода */
+
+input {
+    font-family: 'Lora', serif;
+}
+
+/* Подписи и вспомогательный текст */
+
+.counter-item p,
+.counter-hint,
+.scroll-hint,
+.riddle-card span {
+    font-family: 'Lora', serif;
+}
+
+/* Рукописные акценты */
+
+.counter-footer {
+    font-size: 24px;
+    letter-spacing: 0.3px;
+}
+
+/* Читаемость текста */
+
+.description,
+.memories p,
+.photo-card p,
+.counter-description,
+.riddle-description,
+.riddle-hint {
+    line-height: 1.9;
+}
+
+/* РУКОПИСНЫЙ ШРИФТ РЕБУСА */
+
+#riddleInput,
+#riddleMessage {
+    font-family: 'Caveat';
+    font-size: 20px;
+    font-weight: 500;
+}

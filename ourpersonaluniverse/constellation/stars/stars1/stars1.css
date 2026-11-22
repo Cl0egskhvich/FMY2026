@@ -1,0 +1,258 @@
+
+* {
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@400;500;600;700&display=swap');
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #090817;
+    color: white;
+    font-family: 'Lora', serif;
+}
+
+h1,
+h2,
+h3,
+button {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+}
+
+/* ЗВЁЗДНЫЙ ФОН */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#b9a5ff 1px, transparent 1px);
+    background-size: 90px 90px, 130px 130px;
+    background-position: 0 0, 45px 55px;
+    opacity: 0.5;
+}
+
+/* ОСНОВНОЙ КОНТЕЙНЕР */
+
+.game-container {
+    width: 95%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    color: #c7bddf;
+    margin-bottom: 65px;
+}
+
+/* ОБЛАСТЬ СОРТИРОВКИ */
+
+.sorting-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.photo-slots {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 850px;
+}
+
+.photo-slot {
+    aspect-ratio: 3 / 4;
+    border: 2px dashed #8272b7;
+    border-radius: 12px;
+    background: #ffffff08;
+    transition: 0.3s;
+}
+
+.photo-slot.drag-over {
+    border-color: #ffad55;
+    background: #ffad5520;
+}
+
+.date-label {
+    writing-mode: vertical-rl;
+    font-size: 17px;
+    color: #d5c5ff;
+    white-space: nowrap;
+}
+
+.oldest {
+    transform: rotate(180deg);
+}
+
+/* ФОТОГРАФИИ */
+
+.photos-container {
+    margin-top: 75px;
+}
+
+.photos-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    min-height: 180px;
+}
+
+.photo {
+    width: 145px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 2px solid #a995dc;
+    border-radius: 12px;
+    cursor: grab;
+    transition: 0.25s;
+}
+
+.photo:active {
+    cursor: grabbing;
+}
+
+.photo.dragging {
+    opacity: 0.4;
+}
+
+/* ОШИБКА */
+
+.photo-slot.wrong {
+    border: 2px solid #ff4d68;
+    box-shadow: 0 0 15px #ff4d68;
+}
+
+/* ПРАВИЛЬНЫЙ ОТВЕТ */
+
+.photo-slot.correct {
+    border: 2px solid #ffbd75;
+    box-shadow:
+        0 0 12px #ffad55,
+        0 0 25px #ffad5580;
+}
+
+/* ПОБЕДА */
+
+.success-message {
+    display: none;
+    margin-top: 55px;
+    animation: appear 1s ease;
+}
+
+.success-message h2 {
+    color: #ffbd75;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.success-message p {
+    color: #d5c5ff;
+    margin-bottom: 25px;
+}
+
+.success-message button {
+    padding: 14px 28px;
+    border: 1px solid #ffbd75;
+    border-radius: 30px;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.success-message button:hover {
+    background: #ffad55;
+    color: #171020;
+    box-shadow: 0 0 20px #ffad55;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media (max-width: 700px) {
+
+    .game-container {
+        padding: 40px 8px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .sorting-area {
+        gap: 8px;
+    }
+
+    .photo-slots {
+        gap: 5px;
+    }
+
+    .date-label {
+        font-size: 11px;
+    }
+
+    .photo {
+        width: 95px;
+    }
+
+}
+
+/* СЕНСОРНОЕ ПЕРЕТАСКИВАНИЕ */
+
+.photo {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ИСПРАВЛЕНИЕ СЕТКИ ФОТОГРАФИЙ НА МОБИЛЬНЫХ */
+
+.sorting-area {
+    width: 100%;
+    min-width: 0;
+}
+
+.photo-slots {
+    flex: 1;
+    min-width: 0;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.photo-slot {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.photo-slot .photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

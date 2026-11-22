@@ -1,0 +1,99 @@
+{
+  "canvas": {
+    "width": 1280,
+    "height": 508
+  },
+  "background": "background.png",
+  "objects": [
+    {
+      "file": "object_01.png",
+      "original_layer": 2,
+      "canvas_position": {
+        "x": "+301",
+        "y": "+165"
+      },
+      "layer_size": "87x106"
+    },
+    {
+      "file": "object_02.png",
+      "original_layer": 3,
+      "canvas_position": {
+        "x": "+782",
+        "y": "+74"
+      },
+      "layer_size": "35x44"
+    },
+    {
+      "file": "object_03.png",
+      "original_layer": 4,
+      "canvas_position": {
+        "x": "+802",
+        "y": "+254"
+      },
+      "layer_size": "31x47"
+    },
+    {
+      "file": "object_04.png",
+      "original_layer": 5,
+      "canvas_position": {
+        "x": "+75",
+        "y": "+219"
+      },
+      "layer_size": "191x82"
+    },
+    {
+      "file": "object_05.png",
+      "original_layer": 6,
+      "canvas_position": {
+        "x": "+464",
+        "y": "+463"
+      },
+      "layer_size": "71x28"
+    },
+    {
+      "file": "object_06.png",
+      "original_layer": 7,
+      "canvas_position": {
+        "x": "+368",
+        "y": "+58"
+      },
+      "layer_size": "380x391"
+    },
+    {
+      "file": "object_07.png",
+      "original_layer": 8,
+      "canvas_position": {
+        "x": "-53",
+        "y": "+477"
+      },
+      "layer_size": "224x29"
+    },
+    {
+      "file": "object_08.png",
+      "original_layer": 9,
+      "canvas_position": {
+        "x": "+1207",
+        "y": "+28"
+      },
+      "layer_size": "35x22"
+    },
+    {
+      "file": "object_09.png",
+      "original_layer": 10,
+      "canvas_position": {
+        "x": "+337",
+        "y": "+15"
+      },
+      "layer_size": "201x476"
+    },
+    {
+      "file": "object_10.png",
+      "original_layer": 11,
+      "canvas_position": {
+        "x": "+1051",
+        "y": "+175"
+      },
+      "layer_size": "20x206"
+    }
+  ]
+}
