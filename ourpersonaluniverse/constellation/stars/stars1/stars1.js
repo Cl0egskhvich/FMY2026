@@ -269,6 +269,6 @@ function checkSorting() {
 
 backButton.addEventListener("click", function() {
 
-    window.location.href = "/ourpersonaluniverse/constellation/constellation.html";
+    window.location.href = "FMY2026/ourpersonaluniverse/constellation/constellation.html";
 
 });
