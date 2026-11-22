@@ -1519,29 +1519,69 @@ heartHuntRetry.addEventListener("click", function() {
 
     // ЗАХВАТ ФИГУР ИЗ НИЖНЕЙ ПАНЕЛИ
 
-
     tetrisPieces.addEventListener("pointerdown", function(event) {
 
+        // Не начинаем перетаскивание при нажатии на вращение
         if (event.target.closest(".piece-rotate")) return;
 
         const option = event.target.closest(".piece-option");
 
         if (!option) return;
 
-        const block = event.target.closest(".piece-preview span");
+        const shapeName = option.dataset.shape;
+        const shape = shapes[shapeName];
 
-        if (!block) return;
+        // Получаем размеры фигуры
+        const size = getShapeSize(shape);
 
-        const rect = block.getBoundingClientRect();
+        // Определяем, куда именно нажали внутри карточки
+        const rect = option.getBoundingClientRect();
+
+        const relativeX = event.clientX - rect.left;
+        const relativeY = event.clientY - rect.top;
+
+        // Учитываем область, отведённую под кнопку вращения
+        const preview = option.querySelector(".piece-preview");
+        const previewRect = preview.getBoundingClientRect();
+
+        const x = Math.max(0, Math.min(
+            previewRect.width - 1,
+            event.clientX - previewRect.left
+        ));
+
+        const y = Math.max(0, Math.min(
+            previewRect.height - 1,
+            event.clientY - previewRect.top
+        ));
+
+        const metrics = {
+            width: previewRect.width / size.width,
+            height: previewRect.height / size.height
+        };
+
+        // Определяем клетку фигуры, за которую её захватили
+        const grabCol = Math.min(
+            size.width - 1,
+            Math.floor(x / metrics.width)
+        );
+
+        const grabRow = Math.min(
+            size.height - 1,
+            Math.floor(y / metrics.height)
+        );
+
+        // Смещение точки захвата внутри клетки
+        const offsetX = x - grabCol * metrics.width;
+        const offsetY = y - grabRow * metrics.height;
 
         startDrag(
-            option.dataset.shape,
+            shapeName,
             event,
             null,
-            Number(block.dataset.col),
-            Number(block.dataset.row),
-            event.clientX - rect.left,
-            event.clientY - rect.top
+            grabCol,
+            grabRow,
+            offsetX,
+            offsetY
         );
 
     });

@@ -1158,21 +1158,48 @@ button {
     font-family: 'Caveat', cursive;
 }
 
-/* ФИКСИРОВАННЫЙ РАЗМЕР ПАНЕЛИ ФИГУР НА ПК */
+
+/* ФИКСИРОВАННАЯ ПАНЕЛЬ ФИГУР */
 
 .piece-option {
     width: 82px;
-    height: 105px;
+    height: 112px;
     flex: 0 0 82px;
+
     box-sizing: border-box;
+    padding: 32px 8px 4px;
+
+    position: relative;
 }
 
-/* Сохраняем размеры мобильной версии */
+/* КНОПКА ПОВОРОТА */
+
+.piece-rotate {
+    top: 2px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
 
 @media (max-width: 600px) {
+
+    .tetris-pieces {
+        gap: 8px;
+        padding: 12px 2px;
+        row-gap: 12px;
+    }
+
     .piece-option {
         width: 58px;
-        height: 58px;
+        height: 76px;
         flex: 0 0 58px;
+
+        padding: 30px 2px 2px;
     }
+
+    .piece-rotate {
+        width: 27px;
+        height: 27px;
+        top: 0;
+    }
+
 }
